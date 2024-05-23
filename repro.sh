@@ -12,6 +12,7 @@ if [[ -n "$(docker ps -a -q -f name=${container_name})" ]]; then
   docker rm -f "$container_name"
 fi
 
+echo "NOTE: set gunicorn==21.2.0 in requirements.txt to see the working version"
 docker build . -t gunicornbrokenouchy
 docker run -d --name "$container_name" -p 8000:8000 gunicornbrokenouchy
 sleep 4
